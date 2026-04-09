@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institute of Diesel & Heavy Equipment Fittings TVET | Professional Technical Education</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    :root {
+      --primary: #004aad;
+      --secondary: #f7c04a;
+      --text-dark: #222;
+      --bg-light: #f4f7f6;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { color: var(--text-dark); background: #fff; line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; transition: var(--transition); }
+
+    /* FADE ANIMATION */
+    .fade { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    /* HEADER */
+    .top-bar { background: var(--primary); color: #fff; padding: 8px 60px; font-size: 13px; text-align: right; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    header { position: sticky; top: 0; width: 100%; padding: 10px 60px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.98); z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo-small { height: 45px; }
+    header h1 { color: var(--primary); font-size: 20px; font-weight: 800; text-transform: uppercase; }
+    nav a { color: var(--text-dark); margin-left: 20px; font-size: 13px; font-weight: 600; }
+    nav a:hover { color: var(--primary); }
+
+    /* HERO */
+    .hero { position: relative; height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; background: #000; }
+    .hero video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; z-index: 1; }
+    .hero-content { position: relative; z-index: 2; padding: 20px; }
+    .hero h2 { font-size: clamp(30px, 5vw, 50px); font-weight: 700; line-height: 1.2; }
+    .btn { padding: 12px 30px; background: var(--secondary); border-radius: 50px; color: var(--text-dark); display: inline-block; font-weight: 700; margin-top: 20px; border:none; cursor:pointer; }
+    .btn:hover {  background: transparent;  color: var(--primary);  border: 2px solid var(--primary);}
+
+/* SLIM STATS BAR */
+    .stats-container { background: var(--primary); padding: 10px 20px; position: relative; z-index: 10; margin-top: -35px; width: 65%; margin-left: auto; margin-right: auto; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+    .stats-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; text-align: center; }
+    .stat-item { color: #fff; padding: 10px; transition: var(--transition); border-radius: 8px; }
+    .stat-item:hover { background: rgba(255,255,255,0.1); transform: translateY(-3px); }
+    .stat-item svg { width: 24px; height: 24px; fill: var(--secondary); margin-bottom: 5px; }
+    .stat-item h2 { font-size: 24px; margin: 2px 0; color: var(--secondary); }
+    .stat-item p { font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9; }
+
+    /* SECTIONS */
+    section { padding: 80px 60px; }
+    .container { max-width: 1100px; margin: auto; }
+    .section-title { font-size: 30px; text-align: center; margin-bottom: 40px; position: relative; padding-bottom: 10px; }
+    .section-title::after { content:''; width:50px; height:3px; background:var(--secondary); position:absolute; bottom:0; left:50%; transform:translateX(-50%); }
+
+    /* GRID & CARDS */
+    .unified-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+    .unified-card { background: #fff; padding: 35px 25px; border-radius: 12px; text-align: center; border: 1px solid #eee; transition: var(--transition); }
+    .unified-card:hover { border-color: var(--secondary); box-shadow: 0 10px 25px rgba(0,0,0,0.05); transform: translateY(-5px); }
+    .unified-card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.2rem; }
+    .section-icon { width: 40px; height: 40px; fill: var(--primary); margin-bottom: 15px; }
+    .sec-color { fill: var(--secondary); }
+
+
+/* Style for images replacing the SVGs */
+/* Professional Rectangular Image Styling */
+    .card-img {
+      width: 100%;          /* Takes up the full width of the card */
+      height: 180px;        /* Fixed height to keep all cards uniform */
+      object-fit: cover;    /* Crops the image perfectly to fit the box */
+      border-radius: 12px;  /* Slightly rounded corners for a modern feel */
+      margin-bottom: 20px;
+      border-bottom: 4px solid var(--secondary); /* Optional: adds a "brand" accent line */
+      transition: var(--transition);
+    }
+
+    /* Subtle lift and zoom effect on hover */
+    .unified-card:hover .card-img {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+
+
+
+
+    /* TESTIMONIALS */
+
+/* Force the entire slider to the middle of the screen */
+  /* 1. Ensure the Container is Full Width */
+    #testimonials .container {
+      max-width: 1200px; 
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* 2. Swiper Settings */
+    .testimonialSwiper {
+      width: 100%;
+      padding: 40px 10px 60px !important;
+      overflow: hidden; /* Vital for Swiper to work */
+    }
+
+    /* 3. Slide Item Styling */
+.testimonial-slide {
+      background: #f9f9f9;
+      padding: 25px 20px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 15px;
+      border: 1px solid #eee;
+      
+      /* THE FIX: Remove fixed height and use these instead */
+      min-height: 160px;   /* Minimum size so they don't look small */
+      height: 100%;       /* Allows the card to fill the swiper-slide height */
+      width: 100%;
+      
+      transition: var(--transition);
+    }
+
+    /* This forces the Swiper Slide to stretch the card inside it */
+    .swiper-slide {
+      height: auto !important; /* Important for Swiper */
+      display: flex;
+    }
+
+    .testimonial-content {
+      flex: 1; /* Allows text to take up remaining space */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-content p {
+      font-style: italic;
+      font-size: 13.5px;
+      line-height: 1.5; /* Better spacing for longer quotes */
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    /* Centering the pagination dots */
+    .swiper-pagination {
+      position: relative !important;
+      bottom: 0 !important;
+      margin-top: 20px;
+      text-align: center;
+      width: 100% !important;
+      left: 0 !important;
+    }
+
+    .author {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Center the dots */
+    .swiper-pagination {
+      bottom: 10px !important;
+    }
+
+.testimonial-img {
+      /* Fixed Dimensions */
+      width: 70px !important;  
+      height: 70px !important;
+      
+      /* The "Magic" properties for uniformity */
+      flex-shrink: 0;         /* Stops the image from being squashed by long text */
+      object-fit: cover;      /* Crops the photo to fit the circle without stretching */
+      border-radius: 50%;     /* Makes it a perfect circle */
+      
+      /* Professional Styling */
+      border: 3px solid var(--secondary); 
+      background-color: #eee; /* Shows a light grey circle if the image fails to load */
+      display: block;
+    }
+
+    /* Extra safety: Ensure the container doesn't squeeze the image */
+    .testimonial-slide {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 25px;
+      overflow: hidden; /* Prevents text from leaking out */
+    }
+
+
+
+    /* GALLERY */ 
+    /* 'auto-fit' combined with 1fr ensures it fills the container width without overflowing */
+   /* Prevents stretching by cropping the image to fit the box */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; width: 100%; } /* Forces the grid to respect the container width */
+    .gallery-grid img { width: 100%; height: 250px; border-radius: 10px; object-fit: cover; transition: 0.3s; cursor: pointer; transition: var(--transition); } /* Makes the image responsive to the grid cell */ /* Keeps all images uniform in height */
+    .gallery-grid img:hover { transform: scale(1.03); }
+
+    /* PARTNERS */
+    .partnership-lead { font-size: 1.2rem; font-style: italic; text-align: center; margin-bottom: 30px; color: #555; border-left: 4px solid var(--secondary); padding-left: 20px; }
+    .partner-logo-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px; align-items: center; opacity: 0.7; }
+    .partner-logo-row img { height: 100px; filter: grayscale(100%); transition: 0.3s; }
+    .partner-logo-row img:hover { filter: grayscale(0%); opacity: 1; }
+    
+
+    /* CONTACT */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: var(--bg-light); padding: 40px; border-radius: 20px; }
+    input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 8px; border: 1px solid #ddd; }
+    
+  
+/* REFINED CENTERED FOOTER */
+    footer { 
+      background: var(--primary); 
+      color: #fff; 
+      padding: 60px 20px 20px; 
+      border-top: 5px solid var(--secondary); 
+    }
+
+    .footer-grid {
+      display: grid;
+      /* This ensures the columns are centered and don't stretch too wide */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      justify-items: center; /* Centers content within each grid cell */
+    }
+
+    footer h4 { 
+      color: var(--secondary); 
+      margin-bottom: 20px; 
+      text-transform: uppercase; 
+      letter-spacing: 1px; 
+      font-size: 1rem; 
+    }
+
+    footer p { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; max-width: 300px; }
+    footer a { color: rgba(255,255,255,0.8); display: block; margin-bottom: 12px; font-size: 14px; }
+    footer a:hover { color: var(--secondary); }
+
+    .footer-bottom { 
+      text-align: center; 
+      padding-top: 30px; 
+      margin-top: 40px; 
+      border-top: 1px solid rgba(255,255,255,0.1); 
+      color: rgba(255,255,255,0.5); 
+      font-size: 12px; 
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid { text-align: center; }
+      footer p { margin: 0 auto; }
+    }
+
+    @media (max-width: 768px) {
+      header, section { padding: 30px 20px; }
+      .split, .media-block, .contact-wrapper { grid-template-columns: 1fr; }
+      .stats-container { width: 95%; padding: 15px; }
+      .top-bar, nav { display: none; }
+    }
+
+/* DELETE THIS OLD BLOCK */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.split img, .media-block img, .media-block video { width: 100%; border-radius: 15px; box-shadow: 10px 10px 0 var(--secondary); }
+.media-block { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+
+/* Unified Media Block Grid */
+/* Fix for Media Block Uniformity */
+/* THE CORRECT FIXED MEDIA BLOCK */
+    .media-block {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    /* This creates the uniform frame for every image and video */
+    .media-block > div {
+      width: 100%;
+      height: 250px; 
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .media-block img, 
+    .media-block video {
+      width: 100%;
+      height: 100%;      
+      object-fit: cover;  /* This is what fixes the different sizes */
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .media-block img:hover {
+      transform: scale(1.05);
+    }
+
+
+.button-container {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+/* Training Programs Section Styling */
+    #programs { background: #fcfcfc; padding: 80px 0; }
+    
+    .section-head { text-align: center; margin-bottom: 50px; }
+    
+    .chip { 
+      background: rgba(0, 74, 173, 0.1); 
+      color: var(--primary); 
+      padding: 5px 15px; 
+      border-radius: 20px; 
+      font-size: 12px; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 1px;
+    }
+
+    .section-head h3 { 
+      font-size: 32px; 
+      color: var(--primary); 
+      margin-top: 10px; 
+      font-weight: 700;
+    }
+
+    /* Card Styling */
+    .programSwiper { padding: 20px 20px 50px !important; }
+    
+    article.card {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 20px;
+      border: 1px solid #eee;
+      height: 100%;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    article.card:hover {
+      border-color: var(--secondary);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      transform: translateY(-10px);
+    }
+
+    .meta { 
+      color: var(--secondary); 
+      font-weight: 700; 
+      font-size: 12px; 
+      text-transform: uppercase; 
+      margin-bottom: 15px; 
+    }
+
+    article.card h5 { 
+      font-size: 20px; 
+      margin-bottom: 15px; 
+      color: var(--primary); 
+      line-height: 1.3;
+    }
+
+    article.card p { 
+      font-size: 14px; 
+      color: #666; 
+      margin-bottom: 25px; 
+      flex-grow: 1; 
+    }
+
+    .link { 
+      font-weight: 700; 
+      color: var(--primary); 
+      font-size: 14px; 
+      display: inline-block;
+    }
+
+    .link:hover { color: var(--secondary); padding-left: 5px; }
+
+    /* Customizing Swiper Dots */
+    .swiper-pagination-bullet-active { background: var(--primary) !important; }
+
+
+  </style>
+</head>
+<body>
+  <div class="top-bar">Contact: pominstituteofdhef@gmail.com | +675 7912 3615</div>
+  <header>
+    <div class="header-left">
+      <img src="images/logo.jpg" class="logo-small" alt="Logo">
+      <h1>Institute of Diesel & Heavy Equipment Fittings</h1>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#programs">Training Programs</a>
+      <a href="#hands-on">Gallery</a>
+      <a href="#partners">Partnership</a>
+      <a href="#news">News</a>
+      <a href="#contact">Admission</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <video autoplay muted loop playsinline>
+     <source src="images/IDHEF.mp4" type="video/mp4">
+    </video>
+    <div class="hero-content">
+      <h2>Technical Excellence <br> Industry-Ready Skills</h2>
+      <p>Building world-class technicians for a global workforce.</p>
+ <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">  Start your Application </button>
+    </div>
+  </section>
+
+  <div class="stats-container">
+    <div class="stats-bar">
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        <h2 class="counter" data-target="7672">0</h2>
+        <p>Enrolled Students</p>
+      </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg>
+        <h2 class="counter" data-target="4317">0</h2>
+        <p>Total Graduates</p>
+      </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24"><path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.7,4.7C0.6,7.1 1,10.1 3,12.1C4.9,14 7.6,14.5 9.9,13.6L19,22.7L22.7,19Z"/></svg>
+        <h2 class="counter" data-target="3308">0</h2>
+        <p>Expert Technicians</p>
+      </div>
+      <div class="stat-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        <h2><span class="counter" data-target="95">0</span>%</h2>
+        <p>Job Placement</p>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="fade">
+    <div class="container split">
+      <div>
+        <h2 style="font-size: 32px; color: var(--primary);">Who We Are</h2>
+        <p style="margin-bottom: 20px;"><strong>Institute of Diesel & Heavy Equipment Fittings TVET</strong></p>
+        <p>A high-quality technical-vocational institution focused on practical training and character competence. 
+Empowering the next generation of technicians through rigorous technical training and industry-aligned curricula. 
+We bridge the gap between education and high-value employment. 
+We mold the next generation of technicians for a global industry.
+Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class industry partners.</p>
+        <ul style="margin-top: 20px; font-weight: 600; list-style: none;">
+          <li>✓ Modern Industrial Facilities</li>
+          <li>✓ TVET Certified Programs</li>
+          <li>✓ Holistic Character Building</li>
+          <li>✓ Strong Industry Linkages</li>
+
+        </ul>
+      </div>
+      <img src="images/pic16.jpg" alt="About IDHEF TVET">
+    </div>
+  </section>
+
+  <section id="strengths" class="fade" style="background: var(--bg-light);">
+    <div class="container">
+      <h2 class="section-title">Core Strengths</h2>
+      <div class="unified-grid">
+        <div class="unified-card">
+          <svg class="section-icon" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          <h3>Trust</h3>
+          <p>Institutional design language rooted in a global legacy of education.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          <h3>Clarity</h3>
+          <p>Simple navigation and structure ensuring a focused learning path.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
+          <h3>Action</h3>
+          <p>Strong admissions flow designed to get students into the workshop.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <h3>Support</h3>
+          <p>Easy contact and dedicated inquiry lines for students and parents.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trust" class="fade">
+    <div class="container">
+      <h2 class="section-title">Why Students Trust Us</h2>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">Over a decade of molding world-class technicians through foundational excellence.</p>
+
+      <div class="unified-grid">
+        <div class="unified-card">
+          <svg class="section-icon sec-color" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,16.5L16,11.5L14.6,10.1L11,13.7L9.4,12.1L8,13.5L11,16.5Z"/></svg>
+          <h3>Industry Certified</h3>
+          <p>Recognized by top-tier engineering and heavy equipment firms worldwide.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon sec-color" viewBox="0 0 24 24"><path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.7,4.7C0.6,7.1 1,10.1 3,12.1C4.9,14 7.6,14.5 9.9,13.6L19,22.7L22.7,19Z"/></svg>
+          <h3>1:1 Tool Ratio</h3>
+          <p>Hands-on training with actual machinery you will encounter in the field.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon sec-color" viewBox="0 0 24 24"><path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"/></svg>
+          <h3>95% Job Rate</h3>
+          <p>Most graduates are hired by partner industries before finishing.</p>
+        </div>
+      </div>
+
+<div class="swiper testimonialSwiper" style="margin-top: 30px;">
+
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="testimonial-slide">
+        <img src="images/test1.png" alt="Graduate" class="testimonial-img">
+        <div class="testimonial-content">
+          <p>"I spent years in general labor before enrolling. The Diesel Systems course gave me the specific technical edge I needed to land a specialist role."</p>
+          <div class="author">Mark Anthony R. | Heavy Equipment Mechanic</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-slide">
+        <img src="images/test2.png" alt="Specialist" class="testimonial-img">
+        <div class="testimonial-content">
+          <p>"The 1:1 tool-to-student ratio is real. I didn't just watch a demo; I actually performed the diagnostics myself every single day."</p>
+          <div class="author">Junnel S. | Class of 2024 Graduate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-slide">
+        <img src="images/test3.png" alt="Technician" class="testimonial-img">
+        <div class="testimonial-content">
+          <p>"IDHEF doesn't just teach you how to fix machines; they teach you the discipline and safety protocols that top-tier firms actually look for."</p>
+          <div class="author">Ricardo D. | Fleet Maintenance Supervisor</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-slide">
+       <img src="images/test4.png" alt="Graduate" class="testimonial-img">
+        <div class="testimonial-content">
+          <p>"The hands-on training here is far superior to other centers I've visited. It’s a direct path to employment for anyone willing to put in the work."</p>
+          <div class="author">Elena V. | Mechatronics Scholar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-slide">
+        <img src="images/test5.png" alt="Specialist" class="testimonial-img">
+        <div class="testimonial-content">
+          <p>"The hydraulics and equipment fittings module was a game-changer for my career. The instructors are clearly industry veterans who know their stuff."</p>
+          <div class="author">Paolo G. | Senior Hydraulics Technician</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper-slide">
+      <div class="testimonial-slide">
+        <img src="images/test6.png" alt="Technician" class="testimonial-img">
+        <div class="testimonial-content">
+          <p>"I was hired by an international transport company just two weeks after finishing my certification. This school truly prepares you for the field."</p>
+          <div class="author">Christian B. | Diesel Diagnostic Specialist</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+
+
+    </div>
+  </section>
+
+
+<section id="programs" class="fade" style="background: var(--bg-light);">
+  <div class="container">
+    <div class="section-head">
+      <span class="chip">Training Programs</span>
+      <h3>World-Class Technical Courses</h3>
+    </div>
+
+    <div class="swiper programSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="meta">Diesel Systems</div>
+            <h5>Engine Diagnostics & Servicing</h5>
+            <p>Master the complexities of diesel powerplants and fuel systems with hands-on diagnostic training.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="meta">Heavy Equipment</div>
+            <h5>Hydraulics & Equipment Fittings</h5>
+            <p>Learn to maintain and repair high-pressure hydraulic systems used in construction and mining.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="meta">Workshop Ready</div>
+            <h5>Preventive Maintenance</h5>
+            <p>Essential safety protocols and tool mastery required for professional heavy equipment workshops.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="card">
+            <div class="meta">Career Support</div>
+            <h5>Industry Readiness</h5>
+            <p>Bridging the gap between graduation and employment with professional discipline and soft skills.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <section id="hands-on" class="fade">
+    <div class="container">
+      <h2 class="section-title">Gallery</h2>
+      <div class="media-block">
+  
+      <div>          <img src="images/pic2.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training">       </div>
+     <div><img src="images/pic8.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training">       </div>
+    <div> <img src="images/pic5.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training"> </div>
+        <div>          <video controls playsinline style="border-radius:15px; width: 100%;">            <source src="images/life.mp4" type="video/mp4">          </video>        </div>
+   
+      <div>          <img src="images/grads.png" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training">       </div>
+     <div><img src="images/pic9.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training">       </div>
+    <div> <img src="images/pic3.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training"> </div>
+     <div><img src="images/pic4.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training">       </div>
+    <div> <img src="images/pic7.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training"> </div>
+        <div>          <video controls playsinline style="border-radius:15px; width: 100%;">            <source src="images/tools.mp4" type="video/mp4">          </video>        </div>
+        <div><img src="images/pic14.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training">       </div>
+    <div> <img src="images/pic13.jpg" style="border-radius:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);" alt="Lab Training"> </div>
+   </div>
+
+
+
+    </div>
+  </section>
+
+  <section id="gallery" class="fade" style="background:#f9f9f9">
+    <div class="container">
+      <h2 class="section-title">Hands-on Training</h2>
+      <div class="gallery-grid">
+        <img src="images/pic5.jpg?q=80&w=400&h=300" alt="Gallery 1">
+        <img src="images/pic15.jpg?q=80&w=400&h=300" alt="Gallery 2">
+        <img src="images/pic11.jpg?q=80&w=400&h=300" alt="Gallery 3">
+        <img src="images/pic6.jpg?q=80&w=400&h=300" alt="Gallery 4">
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" class="fade">
+    <div class="container">
+      <h2 class="section-title">Partnerships & Support Pathways</h2>
+      
+      <blockquote class="partnership-lead">        "The school was not the end; it was rather the instrumental means for improving the way of life." - St. John Bosco      </blockquote>
+
+      <p style="text-align: center; max-width: 800px; margin: 0 auto 50px auto;">Partner with us through industry support, training pathways, and scholarship sponsorships.</p>
+      
+      <div class="unified-grid">
+        <div class="unified-card">
+          <svg class="section-icon sec-color" viewBox="0 0 24 24"><path d="M22.7,19L13.6,9.9C14.5,7.6 14,4.9 12.1,3C10.1,1 7.1,0.6 4.7,1.7L9,6L6,9L1.7,4.7C0.6,7.1 1,10.1 3,12.1C4.9,14 7.6,14.5 9.9,13.6L19,22.7L22.7,19Z"/></svg>
+          <h3>Industry Support</h3>
+          <p>Donate tools & equipment to support hands-on training resources.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon sec-color" viewBox="0 0 24 24"><path d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14Z"/></svg>
+          <h3>Placement Pathways</h3>
+          <p>Provide internships & employment to create real career opportunities.</p>
+        </div>
+        <div class="unified-card">
+          <svg class="section-icon sec-color" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M11,16.5L16,11.5L14.6,10.1L11,13.7L9.4,12.1L8,13.5L11,16.5Z"/></svg>
+          <h3>Sponsor Scholars</h3>
+          <p>Fund student training to help youth access education.</p>
+        </div>
+      </div>
+
+      <div class="partner-logo-row">
+        <h3 style="width: 100%; text-align: center; margin-bottom: 20px;">Our Valued Partners</h3>
+        <img src="images/mrdc.jfif" alt="Mineral Resources Development Company">
+        <img src="images/prk.png" alt="Petroleum Resources Kutubu">
+        <img src="images/clds.jfif" alt="The Church of Jesus Christ of Latter-day Saints">
+        <img src="images/rdda.jfif" alt="Rigo District Development Authority">
+      </div>
+    </div>
+  <div class="button-container"><a href="#contact">  <button class="btn" type="button">Apply for Sponsorship</button></a>
+</div>
+  </section>
+
+  <section id="news" class="fade" style="background:#f9f9f9">
+    <div class="container">
+      <h2 class="section-title">News & Announcements</h2>
+    
+      
+      <div class="unified-grid">
+        <div class="unified-card">
+          <img src="images/enroll.jpg" alt="Enrollment" class="card-img">
+  
+          <h3>Admissions</h3>
+          <p>Enrollment now open for Class of 2026. Apply before May.</p>
+        </div>
+        <div class="unified-card">
+           <img src="images/pic1.jpg" alt="On-Site Job" class="card-img">
+     
+          <h3>On-Site Training</h3>
+          <p>New workshop sessions ongoing for Diesel Engine Servicing.</p>
+        </div>
+        <div class="unified-card">
+        <img src="images/pic17.jpg" alt="DPWH" class="card-img">
+  
+          <h3>Recognition</h3>
+          <p>Graduate success stories spotlighted on social media.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade">
+    <div class="container">
+      <div class="contact-wrapper">
+        <div>
+          <h2>Enroll Now</h2>
+          <p style="margin: 20px 0;">Start your journey toward a stable, high-paying technical career today.</p>
+          <div style="margin-top:30px">
+            <p><div class="icon">☎ <strong>Hotline:</strong> +675 7912 3615</div></p>
+            <p><div class="icon">✉ <strong>Email: </strong>  pominstituteofdhef@gmail.com</div></p>
+            <p><div class="icon">⌂ <strong>  Address: </strong> Bisini, Boroka, Port Moresby, PNG, 111</div></p>
+          </div>
+        </div>
+        <form id="admission">
+          <input type="text" placeholder="Full Name" required>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px">
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Mobile Number" required>
+          </div>
+          <select required>
+            <option value="">Select Preferred Program</option>
+            <option>Diesel Engine Servicing</option>
+            <option>Hydraulics & Fitting</option>
+            <option>Mechatronics</option>
+          <option>Sponsorship</option>
+          </select>
+          <textarea placeholder="Tell us about your background" rows="4"></textarea>
+          <button class="btn" type="submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+<footer>
+    <div class="container footer-grid">
+      <div>
+           <h4>About IDHEF - TVET<br> Institute of Diesel & Heavy Equipment Fittings</h4>
+        <p>Technical Education for Real Careers.<br>Providing industry-ready skills and real-world training pathways since 2012.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#strengths">Core Strengths</a>
+        <a href="#gallery">Training Gallery</a>
+        <a href="#contact">Enrollment</a>
+      </div>
+
+      <div>
+        <h4>Connect</h4>
+        <a href="#">Facebook</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      © 2026 Institute of Diesel & Heavy Equipment Fittings TVET. All rights reserved.
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+
+
+
+    const reveal = () => {
+      document.querySelectorAll('.fade').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+
+    const startCounters = () => {
+      document.querySelectorAll('.counter').forEach(c => {
+        const target = +c.getAttribute('data-target');
+        const update = () => {
+          const count = +c.innerText;
+          const inc = target / 50;
+          if (count < target) { c.innerText = Math.ceil(count + inc); setTimeout(update, 20); }
+          else c.innerText = target.toLocaleString();
+        };
+        update();
+      });
+    };
+
+    let started = false;
+    window.addEventListener('scroll', () => {
+      if (document.querySelector('.stats-bar').getBoundingClientRect().top < window.innerHeight && !started) {
+        startCounters(); started = true;
+      }
+    });
+
+
+// Initialize Program Swiper
+    const swiper = new Swiper('.programSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        640: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
+      }
+    });
+
+
+const testimonialSwiper = new Swiper('.testimonialSwiper', {
+      slidesPerView: 1,
+      spaceBetween: 25,
+      loop: true,
+      
+      // --- AUTOPLAY SETTINGS ---
+      autoplay: {
+        delay: 4000,                // Slides every 4 seconds
+        disableOnInteraction: false, // Keeps sliding even after user clicks
+      },
+      
+      // Ensures the slider recalculates when the page loads
+      observer: true,
+      observeParents: true,
+
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1100: { slidesPerView: 3 }
+      }
+    });
+
+  </script>
+</body>
+</html>
