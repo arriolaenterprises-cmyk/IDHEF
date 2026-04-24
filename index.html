@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Institute of Diesel & Heavy Equipment Fittings TVET | Professional Technical Education</title>
+  <title>Institute of Diesel & Heavy Equipment Fittings TVET | Your Gateway to Global Professional Excellence</title>
   
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
@@ -667,9 +667,202 @@ lottie-player {
     }
 
 
+
+/* Modal Background Blur */
+    .modal-overlay {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 42, 105, 0.85); /* Deep Blue Overlay */
+        backdrop-filter: blur(8px);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Modal Box */
+    .modal-content {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 500px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+        border-bottom: 5px solid var(--secondary);
+        animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(50px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-modal {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #999;
+    }
+
+    .modal-header i {
+        font-size: 50px;
+        color: var(--secondary);
+        margin-bottom: 15px;
+    }
+
+    .batch-tag {
+        background: var(--secondary);
+        color: var(--primary);
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-weight: 800;
+        font-size: 14px;
+        margin-top: 10px;
+    }
+
+    .modal-features {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+        text-align: left;
+        display: inline-block;
+    }
+
+    .modal-features li {
+        margin: 10px 0;
+        font-weight: 600;
+        color: #444;
+    }
+
+    .modal-features i { color: var(--secondary); margin-right: 10px; }
+
+    .btn-enroll {
+        display: block;
+        background: var(--primary);
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+    .btn-enroll:hover { background: #003a8c; transform: scale(1.05); }
+
+
+
+
+.download-container {
+        margin-top: 40px;
+        max-width: 600px;
+    }
+
+    .download-card {
+        background: #fdfdfd;
+        border: 2px dashed var(--secondary); /* Dashed border looks like a "clip" area */
+        padding: 25px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        transition: 0.3s;
+    }
+
+    .download-card:hover {
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-style: solid; /* Changes to solid on hover */
+    }
+
+    .download-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .download-info i {
+        font-size: 40px;
+        color: #e74c3c; /* PDF Red for recognition */
+    }
+
+    .download-info h4 {
+        color: var(--primary);
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .download-info p {
+        margin: 5px 0 0;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .btn-download {
+        background: var(--primary);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
+
+    .btn-download:hover {
+        background: var(--secondary);
+        color: var(--primary);
+    }
+
+    /* Mobile View */
+    @media (max-width: 600px) {
+        .download-card {
+            flex-direction: column;
+            text-align: center;
+        }
+        .download-info {
+            flex-direction: column;
+        }
+    }
+
+
+
+@keyframes clockwork {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-precision {
+  animation: clockwork 4s steps(1) infinite;
+}
+
+@keyframes engine-idle {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  25% { transform: rotate(2deg) translateX(1px); }
+  75% { transform: rotate(-2deg) translateX(-1px); }
+}
+.animate-idle {
+  animation: engine-idle 0.2s linear infinite, fa-spin 10s linear infinite;
+}
+
+
   </style>
 </head>
+
+
 <body>
+
+
   <div class="top-bar">Contact: pominstituteofdhef@gmail.com | +675 7912 3615</div>
   <header>
     <div class="header-left">
@@ -734,19 +927,14 @@ lottie-player {
         <img src="images/logo.jpg" alt="IDHEF TVET Logo" class="about-logo">
       </div>
         <h2 style="font-size: 32px; color: var(--primary);"> Who We Are</h2>
-        <p style="margin-bottom: 20px;"><strong>Institute of Diesel & Heavy Equipment Fittings TVET</strong></p>
-        <p>A high-quality technical-vocational institution focused on practical training and character competence. 
-Empowering the next generation of technicians through rigorous technical training and industry-aligned curricula. 
-We bridge the gap between education and high-value employment. 
-We mold the next generation of technicians for a global industry.
-Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class industry partners.</p>
-        <ul style="margin-top: 20px; font-weight: 600; list-style: none;">
-          <li>✓ Modern Industrial Facilities</li>
-          <li>✓ TVET Certified Programs</li>
-          <li>✓ Holistic Character Building</li>
-          <li>✓ Strong Industry Linkages</li>
+        <p style="margin-bottom: 20px;"><strong>Institute of Diesel & Heavy Equipment Fittings TVET</strong><br>
+<i>Your Gateway to Global Professional Excellence</i></p>
+        <p>The<strong> Institute of Diesel & Heavy Equipment Fittings (IDHEF)</strong> is a premier multi-disciplinary technical-vocational institution dedicated to practical mastery and professional character. What began as a specialized engine workshop has evolved into a comprehensive <strong>Career Academy</strong>, empowering the next generation of global specialists through rigorous, industry-aligned curricula.
 
-        </ul>
+</p><br>We bridge the gap between classroom education and high-value employment across diverse sectors—from <strong>Advanced Engineering and Logistics to Business Finance and Hospitality.</strong> Our mission is to mold technically proficient, character-driven professionals ready to lead in a competitive global landscape.
+
+</p><br>Whether mastering <strong>Diesel Systems</strong>, navigating <strong>Global Shipping</strong>, or managing <strong>Financial Operations</strong>, our students train with world-class industry partners in a high-stakes, real-world environment.</p>
+ 
       </div>
       <img src="images/pic16.jpg" alt="About IDHEF TVET">
     </div>
@@ -754,27 +942,27 @@ Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class in
 
   <section id="strengths" class="fade" style="background: var(--bg-light);">
     <div class="container">
-      <h2 class="section-title">Core Strengths</h2>
+      <h2 class="section-title">The IDHEF Advantage</h2>
       <div class="unified-grid1">
         <div class="unified-card">
-         <i class="fas fa-shield-alt"></i>
-          <h3>Trust</h3>
-          <p>Institutional design language rooted in a global legacy of education.</p>
+         <i class="fas fa-microchip"></i>
+          <h3>Multi-Sector Industrial Facilities</h3>
+          <p>State-of-the-art labs for engineering, logistics, and professional services.</p>
         </div>
         <div class="unified-card">
-        <i class="fas fa-lightbulb"></i>
-          <h3>Clarity</h3>
-          <p>Simple navigation and structure ensuring a focused learning path.</p>
+        <i class="fas fa-scroll"></i>
+          <h3>Accredited Career Pathways</h3>
+          <p>TVET-certified programs recognized by international industry leaders.</p>
         </div>
         <div class="unified-card">
-          <i class="fas fa-bolt animate-pulse-slow"></i>
-          <h3>Action</h3>
-          <p>Strong admissions flow designed to get students into the workshop.</p>
+          <i class="fas fa-gem"></i>
+          <h3>Holistic Excellence</h3>
+          <p>Rigorous technical training paired with elite character development.</p>
         </div>
         <div class="unified-card">
-      <i class="fas fa-handshake animate-tilt"></i>
-          <h3>Support</h3>
-          <p>Easy contact and dedicated inquiry lines for students and parents.</p>
+      <i class="fas fa-network-wired"></i>
+          <h3>Elite Industry Linkages</h3>
+          <p>Direct employment pipelines with transport, maritime, and financial institutions.</p>
         </div>
       </div>
     </div>
@@ -910,54 +1098,88 @@ Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class in
         
         <div class="swiper-slide">
           <article class="card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-cogs animate-spin-slow text-indigo-500"></i>
-            </div>
-            <div class="meta">Diesel Systems</div>
-            <h5>Engine Diagnostics & Servicing</h5>
-            <p>Master the complexities of diesel powerplants and fuel systems with hands-on diagnostics.</p>
-            <a class="link" href="#contact">Learn more →</a>
+            <i class="fas fa-cogs animate-idle"></i>
+            <div class="meta">Engineering</div>
+            <h5>Diploma in Diesel & HEF</h5>
+            <p>Master heavy equipment fittings and advanced diesel powerplant diagnostics.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-tools animate-bounce-slow text-indigo-500"></i>
-            </div>
-            <div class="meta">Heavy Equipment</div>
-            <h5>Hydraulics & Equipment Fittings</h5>
-            <p>Practical skills for installation and repair of high-pressure hydraulic systems.</p>
-            <a class="link" href="#contact">Learn more →</a>
+            <i class="fas fa-bolt animate-pulse-slow"></i>
+            <div class="meta">Technical</div>
+            <h5>Diploma in Electrical</h5>
+            <p>Comprehensive training in industrial wiring, circuitry, and electrical systems.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-shield-alt text-indigo-500"></i>
-            </div>
-            <div class="meta">Workshop Ready</div>
-            <h5>Preventive Maintenance</h5>
-            <p>Emphasizing safe habits, proper tool usage, and professional workshop behavior.</p>
-            <a class="link" href="#contact">Learn more →</a>
+            <i class="fas fa-hard-hat"></i>
+            <div class="meta">Compliance</div>
+            <h5>OHS Specialist</h5>
+            <p>Professional certification in workplace safety and industrial health protocols.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
           </article>
         </div>
 
         <div class="swiper-slide">
           <article class="card">
-            <div class="program-icon-wrapper">
-              <i class="fas fa-user-graduate text-indigo-500"></i>
-            </div>
-            <div class="meta">Career Support</div>
-            <h5>Industry Readiness</h5>
-            <p>Supporting the transition from training to workplace expectations and professional discipline.</p>
-            <a class="link" href="#contact">Learn more →</a>
+            <i class="fas fa-ship"></i>
+            <div class="meta">Maritime</div>
+            <h5>Ports & Shipping</h5>
+            <p>Logistics and operational management for maritime trade and port facilities.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card">
+            <i class="fas fa-truck-loading"></i>
+            <div class="meta">Logistics</div>
+            <h5>Freight Forwarding</h5>
+            <p>Mastering global supply chains, cargo handling, and international logistics.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card">
+            <i class="fas fa-tractor"></i>
+            <div class="meta">Operations</div>
+            <h5>Machine Operator</h5>
+            <p>Certification for heavy machinery operation and professional fleet driving.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card">
+            <i class="fas fa-concierge-bell"></i>
+            <div class="meta">Service</div>
+            <h5>Tourism & Hospitality</h5>
+            <p>International standards for hotel management and tourism service excellence.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
+          </article>
+        </div>
+
+        <div class="swiper-slide">
+          <article class="card">
+            <i class="fas fa-university"></i>
+            <div class="meta">Business</div>
+            <h5>Bank & Finance</h5>
+            <p>Professional training in financial operations, accounting, and banking systems.</p>
+            <a class="link" href="#contact">Enroll Now →</a>
           </article>
         </div>
 
       </div>
       <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </div>
 </section>
@@ -1051,7 +1273,7 @@ Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class in
           <img src="images/enroll.jpg" alt="Enrollment" class="card-img">
   
           <h3>Admissions</h3>
-          <p>Enrollment now open for Class of 2026. Apply before May.</p>
+          <p>Enrollment now open for 2nd batch Intake June 2026. Apply before May.</p>
         </div>
         <div class="unified-card">
            <img src="images/pic1.jpg" alt="On-Site Job" class="card-img">
@@ -1077,10 +1299,29 @@ Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class in
           <p style="margin: 20px 0;">Start your journey toward a stable, high-paying technical career today.</p>
           <div style="margin-top:30px">
             <p><div class="icon">☎ <strong>Hotline:</strong><a href="tel:+67579123615" style="text-decoration: none; color: inherit;"> +675 7912 3615</a></div></p>
-            <p><div class="icon">✉ <strong>Email: </strong>  pominstituteofdhef@gmail.com</div></p>
+            <p><div class="icon">✉ <strong>Email: </strong><a href="emailto:pominstituteofdhef@gmail.com">  pominstituteofdhef@gmail.com</a></div></p>
             <p><div class="icon">⌂ <strong>  Address: </strong> Bisini, Boroka, Port Moresby, PNG, 111</div></p>
           </div>
+
+<div class="download-container">
+    <div class="download-card">
+        <div class="download-info">
+             <i class="fas fa-file-pdf animate-pulse-slow"></i>
+           
+              <div>  <h4>Official Application Form</h4>
+                <p>Download, print, and fill out your enrollment form manually.</p>
+    
+        <a href="JUNE INTAKE-2RD BATCH APPLICATION.pdf" target="blank_new" class="btn-download" download>
+            Download PDF <i class="fas fa-download"></i>
+        </a>
         </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+
         <form id="admission">
           <input type="text" placeholder="Full Name" required>
           <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px">
@@ -1089,10 +1330,16 @@ Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class in
           </div>
           <select required>
             <option value="">Select Preferred Program</option>
-            <option>Diesel Engine Servicing</option>
-            <option>Hydraulics & Fitting</option>
-            <option>Mechatronics</option>
-          <option>Sponsorship</option>
+
+            <option> Diploma in Electrical </option>
+            <option> Diploma in Diesel & HEF</option>
+            <option> Occupational Health & Safety (OHSS)</option>
+            <option> Tourism & Hospitality Management</option>
+            <option> Driving & Machine Operator Training</option>
+            <option> Ports & Shipping</option>
+            <option> Bank & Finance</option>
+            <option> Freight Forwarding Management</option>
+
           </select>
           <textarea placeholder="Tell us about your background" rows="4"></textarea>
           <button class="btn" type="submit">Submit Application</button>
@@ -1168,18 +1415,22 @@ Master Diesel Engine Servicing, Hydraulics, and Mechatronics with world-class in
 
 
 // Initialize Program Swiper
-    const swiper = new Swiper('.programSwiper', {
-      slidesPerView: 1,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-      }
-    });
+var swiper = new Swiper(".programSwiper", {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    768: { slidesPerView: 2 },
+    1024: { slidesPerView: 3 }, // Shows 3 cards at a time on desktop
+  }
+});
 
 
 const testimonialSwiper = new Swiper('.testimonialSwiper', {
@@ -1225,6 +1476,67 @@ const testimonialSwiper = new Swiper('.testimonialSwiper', {
 
 </div>
 
+
+
+
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("enrollmentModal");
+    const closeBtn = document.querySelector(".close-modal");
+    const enrollBtn = document.getElementById("modalEnrollBtn");
+
+    // Show modal after 3 seconds
+    setTimeout(() => {
+        // Check if user has already seen it this session (optional)
+        if(!sessionStorage.getItem('modalShown')) {
+            modal.style.display = "flex";
+        }
+    }, 3000);
+
+    // Close on X click
+    closeBtn.onclick = function() {
+        modal.style.display = "none";
+        sessionStorage.setItem('modalShown', 'true');
+    }
+
+    // Close on Enroll click
+    enrollBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Close if clicking outside the box
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});
+
+  </script>
+
+<div id="enrollmentModal" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <i class="fas fa-calendar-check animate-pulse-slow"></i>
+            <h2>JUNE INTAKE 2026</h2>
+            <p class="batch-tag">2ND BATCH APPLICATION NOW OPEN</p>
+        </div>
+        <div class="modal-body">
+            <p>Secure your slot for the upcoming semester. Join PNG's premier technical institute and start your journey toward a 95% job placement rate.</p>
+            <ul class="modal-features">
+                <li><i class="fas fa-check"></i> TVET Accredited</li>
+                <li><i class="fas fa-check"></i> Industry-Ready Training</li>
+                <li><i class="fas fa-check"></i> Limited Slots Available</li>
+                <li><i class="fas fa-check"></i>Only 12 slots remaining for Diesel & HEF</li>
+            </ul>
+        </div>
+<div class="modal-footer" style="display: flex; gap: 10px;">
+    <a href="#contact" class="btn-enroll" style="flex: 1;">Apply Online</a>or
+    <a href="JUNE INTAKE-2RD BATCH APPLICATION.pdf" class="btn-enroll" style="flex: 1; background: #666;" download>Download PDF</a>
+</div>
+    </div>
+</div>
 
 </body>
 </html>
